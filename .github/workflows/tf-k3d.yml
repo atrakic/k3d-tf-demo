@@ -1,8 +1,9 @@
-name: 'k3d and tf'
+name: 'tf-k3d'
 
 on:
   pull_request:
   push:
+
 jobs:
   terraform:
     name: 'Terraform'
