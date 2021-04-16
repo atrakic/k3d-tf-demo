@@ -6,7 +6,7 @@
 ## Demo
 
 For more details see: [Demo](https://github.com/atrakic/k3d-tf-demo/actions),
-  [Source action](./.github/workflows/tf-k3d.yaml), [K3d config](./k3d.yaml)
+  [Source action](./.github/workflows/tf-k3d.yml), [K3d config](./k3d.yaml)
 
 
 ## Output
