@@ -4,3 +4,7 @@ output "self" {
     last_update         = timestamp()
   }
 }
+
+output "demo" {
+  value = helm_release.demo.metadata
+}

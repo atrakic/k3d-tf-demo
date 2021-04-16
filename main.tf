@@ -19,7 +19,8 @@ resource "kubernetes_namespace" "this" {
   }
 }
 
-resource "helm_release" "kubewatch" {
-  name  = local.name
-  chart = "./Charts/demo"
+resource "helm_release" "demo" {
+  name      = local.name
+  chart     = "./Charts/demo"
+  namespace = kubernetes_namespace.this.metadata[0].name
 }
