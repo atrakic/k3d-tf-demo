@@ -6,7 +6,7 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform with k3d'
     runs-on: ubuntu-latest
 
     defaults:
@@ -18,13 +18,25 @@ jobs:
         uses: actions/checkout@v2
 
       - uses: AbsaOSS/k3d-action@v1.3.1
-        name: "Create Single Cluster"
+        name: "Create 1st k3d Cluster"
+        id: test-cluster-1
         with:
           cluster-name: "test-cluster-1"
           args: >-
             --agents 1
             --config=k3d.yaml
 
+      - name: Cluster info
+        run: |
+          echo test-cluster-1: ${{ steps.test-cluster-1.outputs.network }} ${{ steps.test-cluster-1.outputs.subnet-CIDR }}
+          echo
+          kubectl cluster-info --context k3d-test-cluster-1
+
+      - name: Get nodes
+        run: |
+          kubectl get nodes -o wide
+          
+## Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
