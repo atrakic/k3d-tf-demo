@@ -20,8 +20,8 @@ jobs:
       - uses: AbsaOSS/k3d-action@v1.5.0
         id: test-cluster
         with:
+          cluster-name: "test"
           args: >-
-            cluster-name: "test"
             --config=k3d.yaml
 
       - name: Cluster info
