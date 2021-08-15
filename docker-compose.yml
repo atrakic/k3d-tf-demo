@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  terraform:
+    image: hashicorp/terraform:light
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: version
+    volumes:
+      - $HOME/.kube/:/root/.kube/:ro
+      - $PWD:/app/
+#environment:
+#- KUBECONFIG=${KUBECONFIG}
+networks:
+  default:
+    external: true
+    name: k3d-k3s-default
