@@ -21,6 +21,7 @@ jobs:
         id: test-cluster
         with:
           args: >-
+            cluster-name: "test"
             --config=k3d.yaml
 
       - name: Cluster info
