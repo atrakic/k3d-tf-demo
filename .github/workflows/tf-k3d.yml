@@ -17,26 +17,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: AbsaOSS/k3d-action@v1.3.1
-        name: "Create 1st k3d Cluster"
-        id: test-cluster-1
+      - uses: AbsaOSS/k3d-action@v1.5.0
+        id: test-cluster
         with:
-          cluster-name: "test-cluster-1"
           args: >-
-            --agents 1
             --config=k3d.yaml
 
       - name: Cluster info
         run: |
-          echo test-cluster-1: ${{ steps.test-cluster-1.outputs.network }} ${{ steps.test-cluster-1.outputs.subnet-CIDR }}
+          echo test-cluster-1: ${{ steps.test-cluster.outputs.network }} ${{ steps.test-cluster.outputs.subnet-CIDR }}
           echo
-          kubectl cluster-info --context k3d-test-cluster-1
+          kubectl cluster-info
 
-      - name: Get nodes
-        run: |
-          kubectl get nodes -o wide
-          
-## Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
