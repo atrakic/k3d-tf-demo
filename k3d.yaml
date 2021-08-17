@@ -5,6 +5,7 @@ agents: 1
 kubeAPI:
   hostIP: "0.0.0.0"
   hostPort: "6443"
+network: k3d
 ports:
   - port: 0.0.0.0:80:80
     nodeFilters:

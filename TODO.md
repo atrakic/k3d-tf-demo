@@ -1,0 +1,2 @@
+- Helm lint
+- Fix run terraform with docker-compose
